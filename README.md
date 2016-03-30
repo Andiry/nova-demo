@@ -16,7 +16,6 @@ On the server side, follow the steps:
 ~~~
 # filebench -f fileserver.f | tee /root/demo-nova/log
 ~~~
-
 3. Read the output from the file and write to Redis server:
 ~~~
 # python setops.py --host=HOST --port=PORT --password=PASSWORD
@@ -28,7 +27,6 @@ On the client side, follow the steps:
 ~~~
 # python flask_web.py --host=HOST --port=PORT --password=PASSWORD
 ~~~
-
 2. Open the web interface and monitor the read time throughput:
 
-http://localhost:9092
+[http://localhost:9092](http://localhost:9092)
