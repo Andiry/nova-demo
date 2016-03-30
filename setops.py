@@ -12,20 +12,26 @@ def connect(host1, port1, password1):
 	return conn
 
 def setkey(conn, ops):
-	conn.set('ops', int(ops))
+	conn.set('ops', ops)
 
 def getoutput():
-	with open('/proc/meminfo') as f:
-		total = int(f.readline().split()[1])
-		free = int(f.readline().split()[1])
-		buffers = int(f.readline().split()[1])
-		cache = int(f.readline().split()[1])
-	mem_inuse = total - free - buffers - cache
-	print mem_inuse / 1024
+	with open('/root/demo-nova/log') as f:
+		f.seek(-2, 2)
+		while f.read(1) != b'\n':
+			f.seek(-2, 1)
+		last = f.readline()
+		array = last.split()
+		if array[1] == 'IO' and array[2] == 'Summary:':
+			ops = array[5]
+		else:
+			print(array[0])
+			ops = 0
+	print ops
+	return ops
 
 def main():
 	host, port, password = getargs.getargs(sys.argv)
-	conn = getops.connect(host, port, password)
+	conn = connect(host, port, password)
 
 	while True:
 		time.sleep(2)

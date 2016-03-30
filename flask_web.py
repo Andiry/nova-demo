@@ -19,7 +19,7 @@ def index():
 def data():
 	arr = []
 	ops = getops.getkey(conn)
-	arr.append([int(time.time()) * 1000, int(ops)])
+	arr.append([int(time.time()) * 1000, float(ops)])
 	return json.dumps(arr)
 
 if __name__ == '__main__':
