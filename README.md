@@ -13,8 +13,9 @@ On the server side, follow the steps:
 
 1. Start a Redis server
 2. Run filebench with `psrun` command and write the output to a log file:
-
-`# filebench -f fileserver.f | tee /root/demo-nova/log`
+```
+# filebench -f fileserver.f | tee /root/demo-nova/log
+```
 3. Read the output from the file and write to Redis server:
 ~~~
 # python setops.py --host=HOST --port=PORT --password=PASSWORD
