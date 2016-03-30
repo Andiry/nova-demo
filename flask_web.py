@@ -13,7 +13,7 @@ def index():
 @app.route('/data')
 def data():
 	arr = []
-	arr.append([int(time.time()), 100])
+	arr.append([int(time.time()) * 1000, 100])
 	return json.dumps(arr)
 
 if __name__ == '__main__':
