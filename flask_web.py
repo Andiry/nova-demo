@@ -1,10 +1,15 @@
 from flask import Flask,render_template,request
 import time
-from datetime import datetime
 import os
+import getops
+import sys, getopt
+import getargs
+import json
 
 app = Flask(__name__)
-import json
+
+host, port, password = getargs.getargs(sys.argv)
+conn = getops.connect(host, port, password)
 
 @app.route('/')
 def index():
@@ -13,10 +18,11 @@ def index():
 @app.route('/data')
 def data():
 	arr = []
-	arr.append([int(time.time()) * 1000, 100])
+	ops = getops.getkey(conn)
+	arr.append([int(time.time()) * 1000, int(ops)])
 	return json.dumps(arr)
 
 if __name__ == '__main__':
-	app.run(host='127.0.0.1', port=9092, debug=True)
+	app.run(host='localhost', port=9092, debug=True)
 
 
