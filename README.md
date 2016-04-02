@@ -15,13 +15,13 @@ On the server side, follow the steps:
 2. Run filebench with `psrun` command and write the output to a log file:
     
     ```
-    # filebench -f fileserver.f | tee /root/demo-nova/log
+    # filebench -f fileserver.f | tee /tmp/NOVA-log
     ```
 
 3. Read the output from the file and write to Redis server:
 
     ```
-    # python setops.py --host=HOST --port=PORT --password=PASSWORD
+    # python setops.py --fs=NOVA --host=HOST --port=PORT --password=PASSWORD
     ```
 
 On the client side, follow the steps:
@@ -29,7 +29,7 @@ On the client side, follow the steps:
 1. Read the output and show in the web server:
 
     ```
-    # python flask_web.py --host=HOST --port=PORT --password=PASSWORD
+    # python flask_web.py --fs=NOVA --host=HOST --port=PORT --password=PASSWORD
     ```
 
 2. Open the web interface and monitor the read time throughput:
