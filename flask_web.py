@@ -29,6 +29,6 @@ def data():
 	return json.dumps(arr)
 
 if __name__ == '__main__':
-	app.run(host='132.239.95.31', port=80, debug=False)
+	app.run(host='localhost', port=9092, debug=False)
 
 
