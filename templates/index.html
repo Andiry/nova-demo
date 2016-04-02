@@ -19,44 +19,52 @@ $(function () {
     });
 
     $.getJSON('/data', function (data) {
-
-        // Create the chart
-        $('#container').highcharts('StockChart', {
+      // Create the chart
+      $('#container').highcharts('StockChart', {
         chart:{
-        events:{
-        
+          events:{
             load:function(){
-            
-                var series = this.series[0]
-                setInterval(function(){
+              var series = this.series;
+              setInterval(function(){
                 $.getJSON('/data',function(res){
-                    $.each(res,function(i,v){
-                        series.addPoint(v)
-                    })
+                  $.each(res[0], function(i,v){
+                    series[0].addPoint(v);
+                  });
+                  $.each(res[1], function(i,v){
+                    series[1].addPoint(v);
+                  });
                 })
-                },2000)
+              }, 2000)
             }
-        }
+          }
         },
 
-            rangeSelector : {
-                selected : 1
-            },
+        rangeSelector : {
+          selected : 1
+        },
 
-            title : {
-                text : 'Filebench throughput'
-            },
+        title : {
+          text : 'Filebench throughput'
+        },
 
-            series : [{
-                name : 'Ops per second',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
+        series : [
+        {
+          name : 'NOVA',
+          data : data[0],
+          tooltip: {
+            valueDecimals: 2
+          }
+        },
+        {
+          name: 'PMFS',
+          data: data[1],
+          tooltip: {
+            valueDecimals: 2
+          }
+        }
+        ]
+      });
     });
-
 });
 </script>
 </body>
