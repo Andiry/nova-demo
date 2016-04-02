@@ -9,7 +9,7 @@ import random
 
 app = Flask(__name__)
 
-host, port, password = getargs.getargs(sys.argv)
+fs, host, port, password = getargs.getargs(sys.argv)
 conn = getops.connect(host, port, password)
 
 @app.route('/')
@@ -21,7 +21,7 @@ def data():
 	arr = []
 	arr.append([])
 	arr.append([])
-	ops = getops.getkey(conn, 'ops')
+	ops = getops.getkey(conn, 'NOVA')
 #	arr[0].append([int(time.time()) * 1000, random.uniform(1, 1000)])
 	arr[0].append([int(time.time()) * 1000, float(ops)])
 	arr[1].append([int(time.time()) * 1000, random.uniform(1, 1000)])

@@ -1,17 +1,20 @@
 import sys, getopt
 
 def usage():
-	print("Usage: --host=HOST --port=PORT --password=PASSWORD")
+	print("Usage: --fs=FS --host=HOST --port=PORT --password=PASSWORD")
 
 def getargs(argv):
-	opts, args = getopt.getopt(argv[1:], "h", ["host=", "port=", "password=", "help"])
+	opts, args = getopt.getopt(argv[1:], "h", ["fs=", "host=", "port=", "password=", "help"])
 
+	fs=""
 	host=""
 	port=""
 	password=""
 
 	for op, value in opts:
-		if op == "--host":
+		if op == "--fs":
+			fs = value
+		elif op == "--host":
 			host = value
 		elif op == "--port":
 			port = value
@@ -21,9 +24,9 @@ def getargs(argv):
 			usage()
 			sys.exit()
 
-	if host == "" or port == "" or password == "":
+	if fs == "" or host == "" or port == "" or password == "":
 		usage()
 		sys.exit()
 
-	return host, port, password
+	return fs, host, port, password
 
