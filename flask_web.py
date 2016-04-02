@@ -22,10 +22,10 @@ def data():
 	arr.append([])
 	arr.append([])
 	ops = getops.getkey(conn, 'NOVA')
+	ops1 = getops.getkey(conn, 'Ext4-DAX')
 #	arr[0].append([int(time.time()) * 1000, random.uniform(1, 1000)])
 	arr[0].append([int(time.time()) * 1000, float(ops)])
-	arr[1].append([int(time.time()) * 1000, random.uniform(1, 1000)])
-	#arr[1].append([int(time.time()) * 1000, float(ops) * 10])
+	arr[1].append([int(time.time()) * 1000, float(ops1)])
 	return json.dumps(arr)
 
 if __name__ == '__main__':
