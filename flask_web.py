@@ -12,6 +12,10 @@ app = Flask(__name__)
 fs, host, port, password = getargs.getargs(sys.argv)
 conn = getops.connect(host, port, password)
 
+# Set initial values
+conn.set('NOVA', '0')
+conn.set('Ext4-DAX', '0')
+
 @app.route('/')
 def index():
 	return render_template('index.html')
