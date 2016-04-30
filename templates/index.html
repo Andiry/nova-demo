@@ -41,6 +41,9 @@ $(function () {
                   $.each(res[1], function(i,v){
                     series[1].addPoint(v);
                   });
+                  $.each(res[2], function(i,v){
+                    series[2].addPoint(v);
+                  });
                 })
               }, 2000)
             }
@@ -71,6 +74,13 @@ $(function () {
         {
           name: 'Ext4-DAX',
           data: data[1],
+          tooltip: {
+            valueDecimals: 2
+          }
+        },
+        {
+          name: 'Ext4-datajournal',
+          data: data[2],
           tooltip: {
             valueDecimals: 2
           }

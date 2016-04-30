@@ -15,6 +15,7 @@ conn = getops.connect(host, port, password)
 # Set initial values
 conn.set('NOVA', '0')
 conn.set('Ext4-DAX', '0')
+conn.set('Ext4-datajournal', '0')
 
 @app.route('/')
 def index():
@@ -25,11 +26,14 @@ def data():
 	arr = []
 	arr.append([])
 	arr.append([])
+	arr.append([])
 	ops = getops.getkey(conn, 'NOVA')
 	ops1 = getops.getkey(conn, 'Ext4-DAX')
+	ops2 = getops.getkey(conn, 'Ext4-datajournal')
 #	arr[0].append([int(time.time()) * 1000, random.uniform(1, 1000)])
 	arr[0].append([int(time.time()) * 1000, float(ops)])
 	arr[1].append([int(time.time()) * 1000, float(ops1)])
+	arr[2].append([int(time.time()) * 1000, float(ops2)])
 	return json.dumps(arr)
 
 if __name__ == '__main__':
