@@ -1,14 +1,22 @@
 <html>
 <head>
 <title>NOVA Demo</title>
+<style>
+  div.imgContainer {
+    display:inline-block;
+  }
+  div.container {
+    font-size:32px;
+  }
+</style>
 </head>
 
 <body>
 
-<div id="container" style="height: 400px; min-width: 310px"></div>
-<script src='/static/jquery.js'></script>
-<script src='/static/highstock.js'></script>
-<script src='/static/exporting.js'></script>
+<div id="container" style="height: 600px; min-width: 310px; font-size: 30px;"></div>
+<script src='static/jquery.js'></script>
+<script src='static/highstock.js'></script>
+<script src='static/exporting.js'></script>
 <script>
 $(function () {
     // 使用当前时区，否则东八区会差八个小时
@@ -72,5 +80,12 @@ $(function () {
     });
 });
 </script>
+<div id="container1" style="height: 50px; min-width: 310px; font-size: 12px;"></div>
+<div id="container2" style="height: 800px; min-width: 310px; font-size: 12px;">
+  <div class="imgContainer">
+    <img height="300" src="http://cseweb.ucsd.edu/~jix024/filebench.png">
+    <div class="caption" style="width: 500px; font-size: 16px; text-align: center">NOVA performance</div>
+  </div>
+</div>
 </body>
 </html>
